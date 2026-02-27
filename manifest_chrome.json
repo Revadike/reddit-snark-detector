@@ -1,25 +1,36 @@
 {
   "manifest_version": 3,
-  "name": "Reddit Snark Detector",
-  "version": "1.0.0",
-  "description": "Identifies Reddit users who post in snark/commentary subreddits",
+  "name": "Reddit User Vibe",
+  "version": "2.0.0",
+  "description": "Get an instant vibe of who's commenting. View their top subreddits in a glance.",
   "permissions": [
     "storage"
   ],
   "host_permissions": [
-    "https://www.reddit.com/*"
+    "https://www.reddit.com/*",
+    "https://old.reddit.com/*",
+    "https://arctic-shift.photon-reddit.com/*"
   ],
   "content_scripts": [
     {
       "matches": [
-        "https://www.reddit.com/*"
+        "https://www.reddit.com/*",
+        "https://old.reddit.com/*"
       ],
       "js": [
+        "config.js",
+        "storage.js",
+        "api.js",
+        "ui.js",
         "content.js"
       ],
       "run_at": "document_idle"
     }
   ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
